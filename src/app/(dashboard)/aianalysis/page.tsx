@@ -105,7 +105,6 @@ const codeDictionary: { [key: string]: string } = {
 };
 
 
-
 function getStyles(name: string, personName: readonly string[], theme: Theme) {
   return {
     fontWeight: personName.includes(name)
