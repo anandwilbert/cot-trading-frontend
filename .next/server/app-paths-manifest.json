@@ -1,8 +1,0 @@
-{
-  "/api/heatmap/route": "app/api/heatmap/route.js",
-  "/api/aianalysis/route": "app/api/aianalysis/route.js",
-  "/api/news/route": "app/api/news/route.js",
-  "/(dashboard)/news/page": "app/(dashboard)/news/page.js",
-  "/(dashboard)/heatmap/page": "app/(dashboard)/heatmap/page.js",
-  "/(dashboard)/aianalysis/page": "app/(dashboard)/aianalysis/page.js"
-}
