@@ -30,14 +30,6 @@ interface TableProps {
 }
 
 export default function MaterialTable({ data, title, height, width }: TableProps) {
-  // Add check for empty or undefined data
-  if (!data || data.length === 0) {
-    return (
-      <div style={{ width, height, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-        <p>No data available</p>
-      </div>
-    );
-  }
 
   const numberFormatter = new Intl.NumberFormat('en-US', {
     minimumFractionDigits: 2,
@@ -352,6 +344,7 @@ export default function MaterialTable({ data, title, height, width }: TableProps
     [minMaxValues]
   );
 
+
   const table = useMaterialReactTable({
     columns,
     data,
@@ -385,6 +378,17 @@ export default function MaterialTable({ data, title, height, width }: TableProps
       },
     },
   });
+
+  
+    // Add check for empty or undefined data
+  if (!data || data.length === 0) {
+    return (
+      <div style={{ width, height, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <p>No data available</p>
+      </div>
+    );
+  }
+
 
   return <MaterialReactTable table={table} />;
 }

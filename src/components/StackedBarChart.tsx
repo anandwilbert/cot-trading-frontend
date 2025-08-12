@@ -68,22 +68,24 @@ export default function StackedBarChart({
 
   // Transform and sort data
   const sortedData = [...data]
-    .sort((a, b) => {
-      if (sortBy === 'xaxis') {
-        // Sort alphabetically by xAxis
-        return a.xAxis.localeCompare(b.xAxis);
-      } else {
-        // Sort numerically by xAxisDim1 (descending)
-        return b.xAxisDim1 - a.xAxisDim1;
-      }
-    })
-    .map(item => ({
-      xaxis: item.xAxis,
-      dim1: item.xAxisDim1,
-      dim2: item.xAxisDim2,
-    }));
+  .sort((a, b) => {
+    if (sortBy === 'xaxis') {
+      // Handle undefined or null xAxis
+      const aValue = a.xAxis ?? ''; // Fallback to empty string
+      const bValue = b.xAxis ?? '';
+      return aValue.localeCompare(bValue);
+    } else {
+      // Sort numerically by xAxisDim1 (descending)
+      return (b.xAxisDim1 ?? 0) - (a.xAxisDim1 ?? 0); // Fallback to 0 for undefined
+    }
+  })
+  .map(item => ({
+    xaxis: item.xAxis ?? '', // Fallback for undefined
+    dim1: item.xAxisDim1 ?? 0,
+    dim2: item.xAxisDim2 ?? 0,
+  }));
 
-    console.log('Sorted Data:', sortedData);
+  console.log('Sorted Data:', sortedData);
 
   return (
     <div style={{ width: width, height: height }}>

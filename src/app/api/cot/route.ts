@@ -14,7 +14,7 @@ export async function POST(request: Request) {
     if (body?.shortCode) {
       //const detailUrl = "http://localhost:8000/get_cot_detail";
      
-      const detailUrl = backendURL + "/get_latest_indicators"
+      const detailUrl = backendURL + "/get_cot_detail"
 
       const detailResponse = await fetch(detailUrl, {
         method: 'POST',
